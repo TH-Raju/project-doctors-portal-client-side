@@ -4,7 +4,7 @@ const AppOption = ({ option, setTreatment }) => {
     const { name, slots } = option;
     return (
         <div>
-            <div className="card  shadow-xl">
+            <div className="card shadow-xl">
                 <div className="card-body text-center">
                     <h2 className="text-2xl text-secondary font-bold text-center">{name}</h2>
                     <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p>
