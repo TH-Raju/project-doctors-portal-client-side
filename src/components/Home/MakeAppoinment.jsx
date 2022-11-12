@@ -1,6 +1,7 @@
 import React from 'react';
 import doctor from '../../assets/images/doctor.png';
 import appointment from '../../assets/images/appointment.png';
+import { Link } from 'react-router-dom';
 
 
 const MakeAppoinment = () => {
@@ -17,7 +18,7 @@ const MakeAppoinment = () => {
                         <h4 className='text-lg text-primary font-bold'>Appoinment</h4>
                         <h1 className="text-4xl text-white font-bold">Make an appoinment Today</h1>
                         <p className="py-6 text-white">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white">Appoinment</button>
+                        <Link to='/appoinment'><button className="btn btn-primary bg-gradient-to-r from-primary to-secondary text-white">Appoinment</button></Link>
                     </div>
                 </div>
             </div>
