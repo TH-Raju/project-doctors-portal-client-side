@@ -4,6 +4,8 @@ import Home from '../components/Home/Home';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import Dashboard from '../dashBoard/Dashboard';
+import MyAppoinment from '../dashBoard/MyAppoinment';
+import DashboardLayout from '../layout/DashboardLayout';
 import Main from '../layout/Main';
 import PrivateRoute from '../Routes/PrivateRoute';
 
@@ -37,7 +39,14 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyAppoinment></MyAppoinment>
+
+            }
+        ]
     }
 
 ])

@@ -2,7 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './context/AuthProvider';
 
 
@@ -11,6 +11,9 @@ const Register = () => {
     const { createUser, updateUser, googleProviderLogin } = useContext(AuthContext);
     const [signUpError, setSignUPError] = useState('')
     const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
+
+
     const handleSignUp = (data) => {
         console.log(data);
         setSignUPError('');
@@ -23,7 +26,10 @@ const Register = () => {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveUser(data.name, data.email);
+
+                    })
                     .catch(err => console.log(err));
             })
             .catch(error => {
@@ -39,6 +45,23 @@ const Register = () => {
                 console.log(user);
             })
             .catch(error => console.error(error))
+    }
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('save user', data);
+                navigate('/');
+            })
+
     }
 
     return (
