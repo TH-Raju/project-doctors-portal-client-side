@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AppOption = ({ option, setTreatment }) => {
-    const { name, slots } = option;
+    const { name, price, slots } = option;
     return (
         <div>
             <div className="card shadow-xl">
@@ -9,6 +9,7 @@ const AppOption = ({ option, setTreatment }) => {
                     <h2 className="text-2xl text-secondary font-bold text-center">{name}</h2>
                     <p>{slots.length > 0 ? slots[0] : 'Try Another day'}</p>
                     <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} availabe</p>
+                    <p>Price: ${price}</p>
                     <div className="card-actions justify-center">
                         <label
                             disabled={slots.length === 0}

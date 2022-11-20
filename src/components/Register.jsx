@@ -3,16 +3,22 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import useToken from '../hooks/useToken';
 import { AuthContext } from './context/AuthProvider';
 
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, googleProviderLogin } = useContext(AuthContext);
+    const [createUserEmil, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createUserEmil);
     const [signUpError, setSignUPError] = useState('')
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
 
+    if (token) {
+        navigate('/');
+    }
 
     const handleSignUp = (data) => {
         console.log(data);
@@ -58,11 +64,14 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('save user', data);
-                navigate('/');
+                setCreatedUserEmail(email);
+
             })
 
     }
+
+
+
 
     return (
         <div className='h-[800px] flex justify-center items-center'>
