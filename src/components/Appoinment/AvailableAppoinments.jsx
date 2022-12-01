@@ -13,8 +13,8 @@ const AvailableAppoinments = ({ selectedDate }) => {
     const { data: appointmentOptions = [], refetch, isLoading } = useQuery({
         queryKey: ['appointmentOptions', date],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/appointmentOptions?date=${date}`)
-            // const res = await fetch(`http://localhost:5000/v2/appointmentOptions?date=${date}`)
+            const res = await fetch(`https://doctors-portal-server-side-gamma.vercel.app/appointmentOptions?date=${date}`)
+            // const res = await fetch(`https://doctors-portal-server-side-gamma.vercel.app/v2/appointmentOptions?date=${date}`)
             const data = await res.json();
             return data
         }
@@ -24,7 +24,7 @@ const AvailableAppoinments = ({ selectedDate }) => {
     }
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/appointmentOptions')
+    //     fetch('https://doctors-portal-server-side-gamma.vercel.app/appointmentOptions')
     //         .then(res => res.json())
     //         .then(data => setappointmentOptions(data))
     // }, [])
