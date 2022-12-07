@@ -14,7 +14,7 @@
 
 
 
-* Gmail - raju@gmail.com pass - Raju@123
+
 
 # Used technologies 
 
@@ -29,6 +29,11 @@
 * Tailwind CSS
 * daisyUI
 * Vercel
+
+
+ ## Admin
+Gmail - raju@gmail.com 
+pass - Raju@123
 
 
 
